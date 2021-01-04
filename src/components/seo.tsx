@@ -27,8 +27,8 @@ function SEO({
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle: string | undefined = site.siteMetadata?.title
+  const metaDescription = description || site.siteMetadata.description;
+  const defaultTitle: string | undefined = site.siteMetadata?.title;
 
   return (
     <Helmet
