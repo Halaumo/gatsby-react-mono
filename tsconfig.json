@@ -9,7 +9,7 @@
     "types": [],
     "outDir": "out",
     "module": "ESNext",
-    "moduleResolution": "Classic",
+    "moduleResolution": "Node",
     "jsx": "react",
     "noImplicitAny": true,
     "strictNullChecks": true,

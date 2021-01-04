@@ -2,7 +2,7 @@
   "name": "resume-react17-gatsby",
   "private": true,
   "description": "Artem Reshetnikov react mono repository",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Artem Reshetnikov",
   "dependencies": {
     "gatsby": "^2.26.1",
@@ -13,12 +13,12 @@
     "gatsby-plugin-sharp": "^2.8.0",
     "gatsby-source-filesystem": "^2.5.0",
     "gatsby-transformer-sharp": "^2.6.0",
-    "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
+    "@types/react-helmet": "^6.1.0",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
     "eslint": "^7.15.0",
