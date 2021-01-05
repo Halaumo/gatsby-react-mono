@@ -35,7 +35,9 @@
     "dev": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "typeWatch": "yarn run tsc --watch",
+    "typeCheck": "yarn run tsc"
   },
   "repository": {
     "type": "git",
