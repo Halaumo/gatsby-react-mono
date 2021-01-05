@@ -44,7 +44,7 @@
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/await-thenable": "off",
     "@typescript-eslint/restrict-template-expressions": "off",
-    "@typescript-eslint/no-require-imports": "error",
+    "@typescript-eslint/no-require-imports": "off",
     "no-inner-declarations": ["error"],
     "camelcase": ["error"],
     "no-loop-func": ["error"],

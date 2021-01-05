@@ -5,8 +5,15 @@ import SEO from '../components/seo'
 
 const IndexPage = (): JSX.Element => (
   <>
-    <SEO title='Home' />
-    <Link to='/404/'>Go to page 404</Link>
+    <div className='container'>
+      <SEO title='Home' />
+      <div>
+        <Link to='/404/'>Go to page 404</Link>
+      </div>
+      <div>
+        <Link to='/fontSize/'>Go to page fontSize</Link>
+      </div>
+    </div>
   </>
 )
 
