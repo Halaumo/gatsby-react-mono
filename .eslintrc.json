@@ -36,6 +36,7 @@
   },
   "plugins": ["@typescript-eslint/eslint-plugin", "react"],
   "rules": {
+    "react/prop-types": "off",
     "@typescript-eslint/no-unsafe-return": "off",
     "@typescript-eslint/no-unsafe-assignment": "off",
     "@typescript-eslint/no-unsafe-member-access": "off",

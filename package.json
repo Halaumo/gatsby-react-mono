@@ -14,6 +14,7 @@
     "gatsby": "~2.26.1",
     "gatsby-image": "~2.5.0",
     "gatsby-plugin-eslint": "~2.0.8",
+    "gatsby-plugin-jss": "^2.7.0",
     "gatsby-plugin-manifest": "~2.6.1",
     "gatsby-plugin-offline": "~3.4.0",
     "gatsby-plugin-react-helmet": "~3.4.0",
@@ -24,6 +25,7 @@
     "react": "~17.0.1",
     "react-dom": "~17.0.1",
     "react-helmet": "~6.1.0",
+    "react-jss": "^10.5.0",
     "typescript": "~4.1.3"
   },
   "keywords": [
@@ -33,12 +35,12 @@
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "typeWatch": "yarn run tsc --watch",
     "typeCheck": "yarn run tsc",
-    "grid": "node smartGrid.js"
+    "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,md}\"",
+    "linter": "yarn run eslint \"./src/**\" --ext .js,.ts,.tsx,.jsx "
   },
   "repository": {
     "type": "git",

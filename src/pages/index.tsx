@@ -3,18 +3,19 @@ import { Link } from 'gatsby'
 
 import SEO from '../components/seo'
 
-const IndexPage = (): JSX.Element => (
-  <>
-    <div className='container'>
-      <SEO title='Home' />
-      <div>
-        <Link to='/404/'>Go to page 404</Link>
+const IndexPage = (): JSX.Element => {
+  return (
+    <>
+      <div className='container'>
+        <SEO title='Home' />
+        {['404', 'fontSize', 'test/jss', 'test/child'].map((el, i) => (
+          <div key={i}>
+            <Link to={`/${el}/`}>{el}</Link>
+          </div>
+        ))}
       </div>
-      <div>
-        <Link to='/fontSize/'>Go to page fontSize</Link>
-      </div>
-    </div>
-  </>
-)
+    </>
+  )
+}
 
 export default IndexPage

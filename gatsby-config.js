@@ -5,6 +5,7 @@ module.exports = {
     author: `Artem`,
   },
   plugins: [
+    'gatsby-plugin-jss',
     {
       resolve: 'gatsby-plugin-eslint',
       options: {
