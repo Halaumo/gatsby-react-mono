@@ -42,8 +42,17 @@
     "noEmit": true,
 
     // decorators
-    "experimentalDecorators": false
+    "experimentalDecorators": false,
+
+    // webpack aliases
+    "baseUrl": "src",
+    "paths": {
+      // "@components": ["components/*"],
+      // "@containers": ["containers/*"],
+      // "@projectContainers": ["projectContainers/*"]
+      "@/*": ["*"]
+    }
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./src/**/*.js", "./src/**/*.jsx"],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./src/**/*.js", "./src/**/*.jsx", "./src/**/*"],
   "exclude": [".yarn", "node_modules", ".cache", "public"]
 }

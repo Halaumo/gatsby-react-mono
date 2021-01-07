@@ -17,6 +17,11 @@
     "react": {
       "version": "detect"
     }
+    // "import/resolver": {
+    //   "alias": [
+    //     ["@", "./src/"]
+    //   ]
+    // }
   },
   "env": {
     "browser": true,

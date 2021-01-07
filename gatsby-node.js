@@ -96,3 +96,17 @@ exports.onCreateNode = async ({ node, getNode, actions }) => {
     value: JSON.stringify(slug.pages),
   })
 }
+
+// add import aliases
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        // '@components': path.resolve(__dirname, 'src/components'),
+        // '@containers': path.resolve(__dirname, 'src/containers'),
+        // '@projectContainers': path.resolve(__dirname, 'src/projectContainers'),
+        '@': path.resolve(__dirname, 'src'),
+      },
+    },
+  })
+}

@@ -1,9 +1,11 @@
 import React from 'react'
 import ChildPage from '../../components/test/children'
+import Nav from '@/projectContainers/nav'
 
 const child = (): JSX.Element => {
   return (
     <>
+      <Nav />
       <ChildPage name='Artem' age={23}>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus, qui omnis odit deleniti
         quo officiis dolor tempore illum obcaecati debitis repellat eaque dolores maxime aliquam.

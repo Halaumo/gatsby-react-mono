@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Nav from '@/projectContainers/nav'
 
 const TextPage = (): JSX.Element => {
   const [fontSize, setFontSize] = useState(16)
@@ -12,6 +13,7 @@ const TextPage = (): JSX.Element => {
 
   return (
     <>
+      <Nav />
       <h1>Font size = {fontSize}</h1>
       <button type='button' onClick={increaseFontSize}>
         Increase

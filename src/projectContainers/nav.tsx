@@ -2,7 +2,7 @@ import React from 'react'
 import Nav from '../../src/components/nav'
 import { useStaticQuery, graphql } from 'gatsby'
 
-const IndexPage = (): JSX.Element => {
+const IndexPage: React.FC<{ visible?: boolean }> = ({ visible = true }): JSX.Element => {
   interface siteData {
       edges: any[]
   }
@@ -24,7 +24,7 @@ const IndexPage = (): JSX.Element => {
   const navMetaData = allSiteBuildMetadata.edges[0].node?.fields?.navMetaData as string
   return (
     <>
-      <Nav pages={navMetaData} />
+      <Nav pages={navMetaData} visible={visible} />
     </>
   )
 }

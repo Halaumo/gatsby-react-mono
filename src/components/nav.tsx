@@ -1,54 +1,78 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'gatsby'
 import { createUseStyles } from 'react-jss'
+import { v4 as uuid } from 'uuid'
 
 const useStyles = createUseStyles({
   tree: () => ({
     [`& p`]: {
       fontSize: 24,
+      fontWeight: 'bold',
     },
     [`& a`]: {
       fontSize: 24,
+      fontWeight: 'italic',
       color: 'blue',
       [`&:hover`]: {
         color: 'red',
       },
     },
-    [`& > ul`]: {
+    [`& ul`]: {
       marginLeft: 10,
     },
   }),
-  myDivVisible: () => ({
+  myDiv: {
     position: 'fixed',
+    left: 0,
+    top: '25%',
+    transform: 'translateY(-50%)',
     padding: 10,
     backgroundColor: '#f1f1f1',
+  },
+  myDivVisible: {
+    composes: '$myDiv',
+    display: 'block',
+  },
+  myDivHidden: {
+    composes: '$myDiv',
+    display: 'none',
+  },
+  myDivHiddenDoublesCssWhenLambda: () => ({
+    composes: '$myDiv',
   }),
-  myDivHidden: () => ({}),
 })
 
-const IndexPage = ({ pages }: { pages: string }): JSX.Element => {
+const IndexPage: React.FC<{ pages: string; visible: boolean }> = ({
+  pages,
+  visible,
+}): JSX.Element => {
   // data-parsing
   const data: (string | { [key: string]: [] })[] = JSON.parse(pages)
 
-  const stringLinkRender = (s: string): JSX.Element => {
-    const baseName = s.split('/').pop()
+  const checkIsRoot = (s: string) => (s === '/index' ? '/' : s)
+
+  const StringLinkRender: React.FC<{ value: string }> = ({ value }) => {
+    const baseName = value.split('/').pop()
     return (
       <li>
-        <Link to={s}>{baseName}</Link>
+        <Link to={checkIsRoot(value)}>{baseName}</Link>
       </li>
     )
   }
 
-  const objectRender = (o: { [key: string]: [] }, root = ''): JSX.Element => {
+  const ObjectRender: React.FC<{ o: { [key: string]: [] }; root: string }> = ({
+    o,
+    root = '',
+  }): JSX.Element => {
     const keys = Object.keys(o)
     const res: JSX.Element[] = []
     for (const key of keys) {
       res.push(
-        <li>
+        <li key={`${root}/${key}`}>
           <p>{`${key}/`}</p>
+          <ul>{render(o[key]!, `${root}/${key}`)}</ul>
         </li>
       )
-      res.push(<ul>{render(o[key]!, `${root}/${key}`)}</ul>)
     }
     return <>{res}</>
   }
@@ -59,9 +83,9 @@ const IndexPage = ({ pages }: { pages: string }): JSX.Element => {
         {data.map((el) => {
           if (typeof el === 'string') {
             const baseName = el.split('.')[0]
-            return stringLinkRender(`${root}/${baseName}`)
+            return <StringLinkRender key={`${root}/${baseName}`} value={`${root}/${baseName}`} />
           }
-          return objectRender(el, root)
+          return <ObjectRender key={uuid()} o={el} root={root} />
         })}
       </>
     )
@@ -69,32 +93,28 @@ const IndexPage = ({ pages }: { pages: string }): JSX.Element => {
 
   // styles
   const classes = useStyles()
-  const tree = useRef(null)
-  const [styleClass, setStyleClass] = useState({
-    isVisible: true,
-    style: classes.myDivVisible,
-  })
+  const [isVisible, setIsVisible] = useState(visible)
 
   const toggleTree = (event: KeyboardEvent) => {
     const { key } = event
     if (!(key === 'Escape')) return
-    if (styleClass.isVisible) {
-      setStyleClass({ isVisible: false, style: classes.myDivHidden })
-    } else {
-      setStyleClass({ isVisible: true, style: classes.myDivVisible })
-    }
+    setIsVisible((prevIsVisible) => !prevIsVisible)
   }
 
   useEffect(() => {
     window.addEventListener('keydown', toggleTree)
-  }, [styleClass])
 
-  // useEffect(() => {}, [styleClass])
+    return () => {
+      window.removeEventListener('keydown', toggleTree)
+    }
+  }, [isVisible])
 
   return (
     <>
-      <div className={styleClass.style} ref={tree}>
-        <ul className={classes.tree}>{render(data)}</ul>
+      <div>
+        <div className={isVisible ? classes.myDivVisible : classes.myDivHidden} key={uuid()}>
+          <ul className={classes.tree}>{render(data)}</ul>
+        </div>
       </div>
     </>
   )
