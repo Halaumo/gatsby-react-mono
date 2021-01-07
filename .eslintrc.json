@@ -34,7 +34,7 @@
   "globals": {
     "process": true
   },
-  "plugins": ["@typescript-eslint/eslint-plugin", "react"],
+  "plugins": ["@typescript-eslint/eslint-plugin", "react", "react-hooks"],
   "rules": {
     "react/prop-types": "off",
     "@typescript-eslint/no-unsafe-return": "off",
@@ -46,6 +46,7 @@
     "@typescript-eslint/await-thenable": "off",
     "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/no-require-imports": "off",
+    "@typescript-eslint/indent": "off",
     "no-inner-declarations": ["error"],
     "camelcase": ["error"],
     "no-loop-func": ["error"],
@@ -208,7 +209,6 @@
       }
     ],
     "no-underscore-dangle": ["error"],
-    "indent": ["error", 2, { "ignoreComments": true, "SwitchCase": 1 }],
     "semi": [
       "error",
       "never",
