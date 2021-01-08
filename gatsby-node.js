@@ -14,7 +14,7 @@ exports.onCreateNode = async ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   const slug = await createNavMetaData()
 
-  createNodeField({
+  await createNodeField({
     node,
     name: `navMetaData`,
     value: JSON.stringify(slug.pages),
@@ -31,3 +31,13 @@ exports.onCreateWebpackConfig = async ({ actions }) => {
     },
   })
 }
+
+// exports.createSchemaCustomization = ({ actions }) => {
+//   const { createTypes } = actions
+//   const typeDefs = `
+//     type AuthorJson implements Node {
+//       joinedAt: Date
+//     }
+//   `
+//   createTypes(typeDefs)
+// }
