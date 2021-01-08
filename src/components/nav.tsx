@@ -70,7 +70,7 @@ const IndexPage: React.FC<{ pages: string; visible: boolean }> = ({
       res.push(
         <li key={`${root}/${key}`}>
           <p>{`${key}/`}</p>
-          <ul>{render(o[key]!, `${root}/${key}`)}</ul>
+          {Array.isArray(o[key]) ? <ul>{render(o[key]!, `${root}/${key}`)}</ul> : undefined}
         </li>
       )
     }
