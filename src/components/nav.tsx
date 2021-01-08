@@ -84,8 +84,9 @@ const IndexPage: React.FC<{ pages: string; visible: boolean }> = ({
           if (typeof el === 'string') {
             const baseName = el.split('.')[0]
             return <StringLinkRender key={`${root}/${baseName}`} value={`${root}/${baseName}`} />
+          } else if (typeof el === 'object') {
+            return <ObjectRender key={uuid()} o={el} root={root} />
           }
-          return <ObjectRender key={uuid()} o={el} root={root} />
         })}
       </>
     )
