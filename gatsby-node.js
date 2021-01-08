@@ -10,15 +10,31 @@ const createNavMetaData = async () => {
   return data
 }
 
-exports.onCreateNode = async ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
-  const slug = await createNavMetaData()
+// exports.onCreateNode = async ({ node, getNode, actions }) => {
+//   const { createNodeField } = actions
+//   const slug = await createNavMetaData()
+//   await createNodeField({
+//     node: node,
+//     name: `navMetaData`,
+//     value: JSON.stringify(slug.pages),
+//   })
+// }
 
-  await createNodeField({
-    node,
-    name: `navMetaData`,
-    value: JSON.stringify(slug.pages),
-  })
+exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => {
+  const { createNode } = actions
+  const data = await createNavMetaData()
+  const node = {
+    id: createNodeId('navMetaData'),
+    parent: null,
+    children: [],
+    internal: {
+      type: 'navMetaData',
+      mediaType: 'text/json',
+      content: JSON.stringify(data.pages),
+      contentDigest: createContentDigest(data),
+    },
+  }
+  await createNode(node)
 }
 
 // import aliases

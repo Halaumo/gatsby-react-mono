@@ -1,19 +1,19 @@
 import React from 'react'
-import Nav from '../../src/components/nav'
+import Nav from '@/components/nav'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const IndexPage: React.FC<{ visible?: boolean }> = ({ visible = true }): JSX.Element => {
   interface siteData {
       edges: any[]
   }
-  const { allSiteBuildMetadata }: { allSiteBuildMetadata: siteData } = useStaticQuery(
+  const { allNavMetaData }: { allNavMetaData: siteData } = useStaticQuery(
     graphql`
       query {
-        allSiteBuildMetadata {
+        allNavMetaData {
           edges {
             node {
-              fields {
-                navMetaData
+              internal {
+                content
               }
             }
           }
@@ -21,7 +21,7 @@ const IndexPage: React.FC<{ visible?: boolean }> = ({ visible = true }): JSX.Ele
       }
     `
   )
-  const navMetaData = allSiteBuildMetadata.edges[0].node?.fields?.navMetaData as string
+  const navMetaData = allNavMetaData.edges[0].node?.internal?.content as string
   return (
     <>
       <Nav pages={navMetaData} visible={visible} />
