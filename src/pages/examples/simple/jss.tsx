@@ -1,5 +1,5 @@
 import React from 'react'
-import JssPage from '../../components/test/jss'
+import JssPage from '@/components/examples/simple/jss'
 import Nav from '@/projectContainers/nav'
 
 const IndexPage = (): JSX.Element => {

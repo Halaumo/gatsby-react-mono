@@ -26,6 +26,16 @@ const useStyles = createUseStyles({
 const Table = () => {
   const styles = useStyles()
 
+  const TrRender: React.FC<{ data: (string | number)[] }> = ({ data }): JSX.Element => {
+    return (
+      <tr>
+        {data.map((el, i) => {
+          return <td key={`el${i}`}>{el}</td>
+        })}
+      </tr>
+    )
+  }
+
   return (
     <>
       <table className={styles.myTable}>
@@ -42,32 +52,13 @@ const Table = () => {
             <th>3 триместр</th>
           </tr>
         </thead>
+
         <tbody>
-          <tr>
-            <td>ФИО</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-          </tr>
-          <tr>
-            <td>ФИО</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-          </tr>
-          <tr>
-            <td>ФИО</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-          </tr>
-          <tr>
-            <td>ФИО</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-          </tr>
+          {new Array(30).fill(['ФИО', 1, 2, 3]).map((el: (string | number)[], i) => {
+            return <TrRender key={i} data={el} />
+          })}
         </tbody>
+
         <tfoot>
           <tr>
             <td>Средняя</td>

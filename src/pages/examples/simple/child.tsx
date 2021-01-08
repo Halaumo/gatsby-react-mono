@@ -1,5 +1,5 @@
 import React from 'react'
-import ChildPage from '../../components/test/children'
+import ChildPage from '@/components/examples/simple/children'
 import Nav from '@/projectContainers/nav'
 
 const child = (): JSX.Element => {
