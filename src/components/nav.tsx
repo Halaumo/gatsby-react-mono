@@ -90,6 +90,7 @@ const IndexPage: React.FC<{ pages: string; visible: boolean }> = ({
           } else if (typeof el === 'object') {
             return <ObjectRender key={uuid()} o={el} root={root} />
           }
+          return <></>
         })}
       </>
     )
