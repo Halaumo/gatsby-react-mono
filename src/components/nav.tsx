@@ -50,15 +50,16 @@ const IndexPage: React.FC<{ pages: string; visible: boolean }> = ({
   const data: (string | { [key: string]: [] })[] = JSON.parse(pages)
 
   const checkIsRoot = (s: string) => (s === '/index' ? '/' : s)
-  const chechIs404 = (s: string) => s.startsWith('/404')
+  const chechIs404 = (s: string) => s.includes('404')
 
   const StringLinkRender: React.FC<{ value: string }> = ({ value }) => {
     const is404 = chechIs404(value)
     if (is404) return <></>
     const baseName = value.split('/').pop()
+    const linkValue = checkIsRoot(value)
     return (
       <li>
-        <Link to={checkIsRoot(value)}>{baseName}</Link>
+        <Link to={linkValue}>{baseName}</Link>
       </li>
     )
   }
@@ -73,9 +74,11 @@ const IndexPage: React.FC<{ pages: string; visible: boolean }> = ({
       res.push(
         <li key={`${root}/${key}`}>
           <p>{`${key}/`}</p>
-          {Array.isArray(o[key]) ? <ul>
-            <Render data={o[key]!} root={`${root}/${key}`} />
-          </ul> : undefined}
+          {Array.isArray(o[key]) ? (
+            <ul>
+              <Render data={o[key]!} root={`${root}/${key}`} />
+            </ul>
+          ) : undefined}
         </li>
       )
     }
@@ -90,7 +93,7 @@ const IndexPage: React.FC<{ pages: string; visible: boolean }> = ({
       <>
         {data.map((el) => {
           if (typeof el === 'string') {
-            const baseName = el.split('.')[0]
+            const baseName = el.split('.')[0]!
             return <StringLinkRender key={`${root}/${baseName}`} value={`${root}/${baseName}`} />
           } else if (typeof el === 'object') {
             return <ObjectRender key={uuid()} o={el} root={root} />
@@ -124,7 +127,7 @@ const IndexPage: React.FC<{ pages: string; visible: boolean }> = ({
       <div>
         <div className={isVisible ? classes.myDivVisible : classes.myDivHidden} key={uuid()}>
           <ul className={classes.tree}>
-            <Render data={data} root={''}/>
+            <Render data={data} root={''} />
           </ul>
         </div>
       </div>

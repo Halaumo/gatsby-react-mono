@@ -48,12 +48,14 @@ exports.onCreateWebpackConfig = async ({ actions }) => {
   })
 }
 
-// exports.createSchemaCustomization = ({ actions }) => {
-//   const { createTypes } = actions
-//   const typeDefs = `
-//     type AuthorJson implements Node {
-//       joinedAt: Date
-//     }
-//   `
-//   createTypes(typeDefs)
+// for gatsby cloud need generate 404 from this hook
+// exports.onCreatePage = async ({ page, actions }) => {
+//   const { createPage, deletePage } = actions
+
+//   if (page.path.match(/^\/?404\/?$/)) {
+//     const oldPage = { ...page }
+
+//     deletePage(oldPage)
+//     createPage(page)
+//   }
 // }
