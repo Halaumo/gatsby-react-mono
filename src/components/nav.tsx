@@ -73,14 +73,19 @@ const IndexPage: React.FC<{ pages: string; visible: boolean }> = ({
       res.push(
         <li key={`${root}/${key}`}>
           <p>{`${key}/`}</p>
-          {Array.isArray(o[key]) ? <ul>{render(o[key]!, `${root}/${key}`)}</ul> : undefined}
+          {Array.isArray(o[key]) ? <ul>
+            <Render data={o[key]!} root={`${root}/${key}`} />
+          </ul> : undefined}
         </li>
       )
     }
     return <>{res}</>
   }
 
-  const render = (data: (string | { [key: string]: [] })[], root = ''): JSX.Element => {
+  const Render: React.FC<{ data: (string | { [key: string]: [] })[]; root: string }> = ({
+    data,
+    root,
+  }): JSX.Element => {
     return (
       <>
         {data.map((el) => {
@@ -118,7 +123,9 @@ const IndexPage: React.FC<{ pages: string; visible: boolean }> = ({
     <>
       <div>
         <div className={isVisible ? classes.myDivVisible : classes.myDivHidden} key={uuid()}>
-          <ul className={classes.tree}>{render(data)}</ul>
+          <ul className={classes.tree}>
+            <Render data={data} root={''}/>
+          </ul>
         </div>
       </div>
     </>
