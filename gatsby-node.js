@@ -43,7 +43,12 @@ const transformData = (obj, [root, paths], data) => {
       for (const file of dirFiles) {
         if (!file.includes('.')) {
           newPaths.push(path.resolve(dirFullPath, file))
-          objData.push({ [file]: [] })
+          const objRef = objData.find((el) => typeof el === 'object')
+          if (objRef === undefined) {
+            objData.push({ [file]: [] })
+          } else {
+            objRef[file] = []
+          }
           continue
         }
         objData.push(file)
@@ -90,6 +95,9 @@ const createNavMetaData = async () => {
 exports.onCreateNode = async ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   const slug = await createNavMetaData()
+
+  console.dir({ slug })
+
   createNodeField({
     node,
     name: `navMetaData`,
@@ -98,7 +106,7 @@ exports.onCreateNode = async ({ node, getNode, actions }) => {
 }
 
 // add import aliases
-exports.onCreateWebpackConfig = ({ actions }) => {
+exports.onCreateWebpackConfig = async ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {

@@ -59,7 +59,12 @@ const transformData = (obj, [root, paths], data) => {
       for (const file of dirFiles) {
         if (!file.includes('.')) {
           newPaths.push(path.resolve(dirFullPath, file))
-          objData.push({ [file]: [] })
+          const objRef = objData.find((el) => typeof el === 'object')
+          if (objRef === undefined) {
+            objData.push({ [file]: [] })
+          } else {
+            objRef[file] = []
+          }
           continue
         }
         objData.push(file)
@@ -113,7 +118,7 @@ const createFullPaths = (pathFn, paths) => {
 (async () => {
   const ROOT = 'src'
   const srcPath = pathFactory(ROOT)
-  const paths = ['components', 'containers', 'images', 'pages', 'projectContainers', 'styles']
+  const paths = ['pages']
   const argPaths = createFullPaths(srcPath, paths)
 
   const data = await getDirGraph([ROOT, argPaths])
