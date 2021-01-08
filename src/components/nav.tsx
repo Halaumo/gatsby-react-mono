@@ -50,8 +50,11 @@ const IndexPage: React.FC<{ pages: string; visible: boolean }> = ({
   const data: (string | { [key: string]: [] })[] = JSON.parse(pages)
 
   const checkIsRoot = (s: string) => (s === '/index' ? '/' : s)
+  const chechIs404 = (s: string) => s.startsWith('/404')
 
   const StringLinkRender: React.FC<{ value: string }> = ({ value }) => {
+    const is404 = chechIs404(value)
+    if (is404) return <></>
     const baseName = value.split('/').pop()
     return (
       <li>
