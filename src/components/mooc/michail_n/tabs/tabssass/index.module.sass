@@ -1,0 +1,36 @@
+.tabs
+  margin-left: 50px
+  margin-top: 20px
+
+  &_head
+    display: flex
+    flex-direction: row
+
+    &__item
+      padding: 5px 10px
+      font-size: 20px
+      border: 1px solid black
+      margin-right: 10px
+
+      &___active
+        background-color: red
+        color: white
+
+      &:hover
+        cursor: pointer
+
+  &_content
+    position: relative
+    margin-top: 10px
+
+    &__item
+      position: absolute
+      top: 0
+      left: 0
+      opacity: 0
+      transform: translateX(100px)
+
+      &___active
+        transition: all 0.25s ease-in-out
+        transform: translateX(0)
+        opacity: 1
