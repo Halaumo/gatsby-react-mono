@@ -1,5 +1,5 @@
 import React from 'react'
-import Nav from '@/projectContainers/nav'
+import Nav from '@/hocs/nav'
 
 const IndexPage = (): JSX.Element => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import SEO from '@/components/seo'
-import Nav from '@/projectContainers/nav'
+import Nav from '@/hocs/nav'
 
 const NotFoundPage = (): JSX.Element => {
   return (

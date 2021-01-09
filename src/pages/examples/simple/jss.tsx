@@ -1,6 +1,6 @@
 import React from 'react'
 import JssPage from '@/components/examples/simple/jss'
-import Nav from '@/projectContainers/nav'
+import Nav from '@/hocs/nav'
 
 const IndexPage = (): JSX.Element => {
   return (

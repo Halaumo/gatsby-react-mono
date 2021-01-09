@@ -1,6 +1,6 @@
 import React from 'react'
 import RandomPerson from '@/components/examples/simple/router/randomPerson'
-import Nav from '@/projectContainers/nav'
+import Nav from '@/hocs/nav'
 import { Router } from '@reach/router'
 
 const Empty: React.FC<any> = () => <div>Empty route</div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Nav from '@/projectContainers/nav'
+import Nav from '@/hocs/nav'
 
 const TextPage = (): JSX.Element => {
   const [fontSize, setFontSize] = useState(16)
