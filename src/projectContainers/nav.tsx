@@ -24,8 +24,8 @@ const IndexPage: React.FC<{ visible?: boolean }> = ({ visible = true }): JSX.Ele
   const navMetaData = allNavMetaData.edges[0].node?.internal?.content as string
   return (
     <>
-      {navMetaData}
-      {/* <Nav pages={navMetaData} visible={visible} /> */}
+      {/* {navMetaData} */}
+      <Nav pages={navMetaData} visible={visible} />
     </>
   )
 }

@@ -59,3 +59,20 @@ exports.onCreateWebpackConfig = async ({ actions }) => {
 //     createPage(page)
 //   }
 // }
+
+
+exports.onCreatePage = async ({ page, actions }) => {
+  const { createPage } = actions
+
+  // spa for route /app
+  if (page.path.match(/^\/app/)) {
+    page.matchPath = '/app/*'
+    createPage(page)
+  }
+
+  // spa for route /examples/simple/router
+  if (page.path.match(/^\/examples\/simple\/router/)) {
+    page.matchPath = '/examples/simple/router/*'
+    createPage(page)
+  }
+}
