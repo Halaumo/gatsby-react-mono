@@ -6,7 +6,7 @@ import { observer } from 'mobx-react-lite'
 class CounterState {
   count = 0
 
-  constructor () {
+  constructor() {
     makeObservable(this, {
       count: observable,
       increment: action,
@@ -14,11 +14,11 @@ class CounterState {
     })
   }
 
-  increment () {
+  increment() {
     this.count++
   }
 
-  decrement () {
+  decrement() {
     this.count--
   }
 }
@@ -26,14 +26,23 @@ class CounterState {
 const state = new CounterState()
 
 const Counter = (): JSX.Element => {
-
   return (
     <>
       <Nav />
       <div>Counter = {state.count}</div>
-      <button onClick={() => { state.increment() }}>Increment</button>
+      <button
+        onClick={() => {
+          state.increment()
+        }}>
+        Increment
+      </button>
       <span> - </span>
-      <button onClick={() => { state.decrement() }}>Decrement</button>
+      <button
+        onClick={() => {
+          state.decrement()
+        }}>
+        Decrement
+      </button>
     </>
   )
 }

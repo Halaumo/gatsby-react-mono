@@ -24,8 +24,7 @@ const useStyles = createUseStyles({
   myDiv: {
     position: 'fixed',
     left: 0,
-    top: '25%',
-    transform: 'translateY(-50%)',
+    top: '10%',
     padding: 10,
     backgroundColor: '#f1f1f1',
   },
