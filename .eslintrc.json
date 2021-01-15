@@ -251,14 +251,6 @@
         }
       }
     ],
-    "max-len": [
-      "error",
-      {
-        "code": 100,
-        "ignoreUrls": true,
-        "ignoreComments": true
-      }
-    ],
     "max-nested-callbacks": [
       "error",
       {

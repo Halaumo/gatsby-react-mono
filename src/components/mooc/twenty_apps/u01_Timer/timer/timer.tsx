@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import { createUseStyles } from 'react-jss'
 import withVisible from '@/hocs/lib/withVisible'
 
@@ -98,10 +98,6 @@ const Timer: FC<props> = ({
 
   const StopButtonWithVisible = withVisible(StopButton)
   const StartButtonWithVisible = withVisible(StartButton)
-
-  // useEffect(() => {
-  //   console.log('render')
-  // }, [])
 
   return (
     <div className={css.app}>
