@@ -5,6 +5,7 @@ module.exports = {
     author: `Artem`,
   },
   plugins: [
+    'gatsby-plugin-styled-components',
     'gatsby-plugin-sass',
     'gatsby-plugin-jss',
     {
