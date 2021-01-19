@@ -1,5 +1,5 @@
 import React from 'react'
-import Component from '@/components/examples/StyledComponents/theme/index'
+import Component from '@/components/examples/StyledComponents/theme/advanced/index'
 import Nav from '@/hocs/nav'
 
 const Index = () => {

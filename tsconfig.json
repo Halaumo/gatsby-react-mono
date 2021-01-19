@@ -45,14 +45,12 @@
     "experimentalDecorators": false,
 
     // webpack aliases
-    "baseUrl": "src",
+    "baseUrl": "./",
     "paths": {
-      // "@components": ["components/*"],
-      // "@containers": ["containers/*"],
-      // "@projectContainers": ["projectContainers/*"]
-      "@/*": ["*"]
+      "@/*": ["src/*"],
+      "#/*": ["libs/*"]
     }
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./src/**/*.js", "./src/**/*.jsx", "./src/**/*"],
+  "include": ["./src/**/*", "./libs/**/*"],
   "exclude": [".yarn", "node_modules", ".cache", "public"]
 }

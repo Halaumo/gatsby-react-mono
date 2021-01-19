@@ -24,9 +24,15 @@ const useStyles = createUseStyles({
   myDiv: {
     position: 'fixed',
     left: 0,
-    top: '10%',
+    top: 0,
     padding: 10,
+    marginTop: 15,
+    marginBottom: 15,
     backgroundColor: '#f1f1f1',
+    zIndex: 9999,
+    overflow: 'scroll',
+    maxHeight: '100vh',
+    maxWidth: '25vw',
   },
   myDivVisible: {
     composes: '$myDiv',
@@ -48,14 +54,14 @@ const IndexPage: React.FC<{ pages: string; visible: boolean }> = ({
   // data-parsing
   const data: (string | { [key: string]: [] })[] = JSON.parse(pages)
 
-  const checkIsRoot = (s: string) => (s === '/index' ? '/' : s)
+  const checkIsIndex = (s: string) => (s.endsWith('/index') ? s.replace(/\/index$/, '/') : s)
   const chechIs404 = (s: string) => s.includes('404')
 
   const StringLinkRender: React.FC<{ value: string }> = ({ value }) => {
     const is404 = chechIs404(value)
     if (is404) return <></>
     const baseName = value.split('/').pop()
-    const linkValue = checkIsRoot(value)
+    const linkValue = checkIsIndex(value)
     return (
       <li>
         <Link to={linkValue}>{baseName}</Link>
